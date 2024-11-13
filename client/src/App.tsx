@@ -1,9 +1,14 @@
+import ImageUploadFrom from "./components/ImageUploadFrom"
+import { ImageUploadProvider } from "./context/ImageUploadContext"
 
 const App = () => {
   return (
-    <div>
-      
+    <ImageUploadProvider>
+        <div>
+      <h1>Image Upload</h1>
+      <ImageUploadFrom/>
     </div>
+    </ImageUploadProvider>
   )
 }
 
