@@ -36,7 +36,7 @@ export const ImageUploadProvider = ({ children }: ImageUploadProviderProps) => {
     formData.append("image", file);
 
     try {
-      const response = await fetch(`https://localhost:5000/api/image/analyse`, {
+      const response = await fetch(`http://localhost:5000/api/image/analyze`, {
         method: "POST",
         body: formData,
       });
