@@ -20,11 +20,22 @@ const analyzeImage = async (req, res) => {
       }
     );
 
-    res.json(response.data)
+    const predictions = response.data.predictions;
+
+    const highestPrediction = predictions.reduce((prev, current) => {
+      return prev.probability > current.probability ? prev : current;
+    });
+
+    const result = {
+      tag: highestPrediction.tagName,
+      confidence: (highestPrediction.probability * 100).toFixed(2),
+    };
+
+    res.json(result);
   } catch (error) {
-    console.error('Error in Custom Vision API:', error);
-    res.status(500).json({message: 'Error analyzing image'})
+    console.error("Error in Custom Vision API:", error);
+    res.status(500).json({ message: "Error analyzing image" });
   }
 };
 
-module.exports = { analyzeImage }
+module.exports = { analyzeImage };
