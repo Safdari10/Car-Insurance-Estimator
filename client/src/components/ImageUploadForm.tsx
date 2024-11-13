@@ -62,7 +62,7 @@ const ImageUploadForm = () => {
           <p>
             Vehicle Type: <strong>{prediction.tag}</strong>
           </p>
-          <p>Confidence: {(prediction.confidence * 100).toFixed(2)}%</p>
+          <p>Confidence: {prediction.confidence}</p>
         </div>
       )}
  

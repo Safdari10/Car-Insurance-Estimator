@@ -49,7 +49,7 @@ export const ImageUploadProvider = ({ children }: ImageUploadProviderProps) => {
 
       const data = await response.json();
       setUploadStatus("completed");
-      setPrediction(data.prediction); 
+      setPrediction(data); 
 
     } catch (err) {
       setError((err as Error).message);

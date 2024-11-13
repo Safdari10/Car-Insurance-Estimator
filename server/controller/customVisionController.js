@@ -30,7 +30,7 @@ const analyzeImage = async (req, res) => {
       tag: highestPrediction.tagName,
       confidence: (highestPrediction.probability * 100).toFixed(2),
     };
-
+    
     res.json(result);
   } catch (error) {
     console.error("Error in Custom Vision API:", error);
