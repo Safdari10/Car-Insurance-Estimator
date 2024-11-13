@@ -30,24 +30,43 @@ const ImageUploadForm = () => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <div className="flex flex-col justify-center items-center gap-2 bg-slate-500 p-5">
-          <label htmlFor="fileInput" className="text-xl px-5 block font-semibold p-2">Upload Image:</label>
-          <input
-            type="file"
-            id="fileInput"
-            name="file"
-            onChange={handleFileChange}
-            accept="image/*"
-            className="text-xl px-3"
-            required
-          />
+        <div className="flex flex-col justify-center items-center gap-2 p-5">
+          <label
+            htmlFor="fileInput"
+            className="text-xl px-5 block font-semibold p-2">
+            Upload Image:
+          </label>
+
+          <div className="relative w-80 h-52 bg-slate-300 border border-slate-400 rounded-lg flex justify-center items-center">
+            <input
+              type="file"
+              id="fileInput"
+              name="file"
+              onChange={handleFileChange}
+              accept="image/*"
+              className="absolute inset-0 opacity-0 cursor-pointer"
+              required
+            />
+            <span className="text-lg text-slate-700">Choose File</span>
+          </div>
+
+          {/* Message below the file input */}
+          <p className="text-sm text-slate-600 mt-2">
+            {selectedFile ? `Selected: ${selectedFile.name}` : "No file chosen"}
+          </p>
         </div>
-        <button type="submit" disabled={uploadStatus === "uploading"} className="bg-blue-600 text-xl my-3 py-2 px-3 rounded-lg hover:text-white" >
+
+        <button
+          type="submit"
+          disabled={uploadStatus === "uploading"}
+          className="bg-blue-600 text-xl my-3 py-2 px-3 rounded-lg hover:text-white">
           {uploadStatus === "uploading" ? "Uploading ..." : "Upload"}
         </button>
 
         {uploadStatus === "failed" && <p>Error: {error}</p>}
-        {uploadStatus === "completed" && <p className="text-lg font-semibold" >Upload successful!</p>}
+        {uploadStatus === "completed" && (
+          <p className="text-lg font-semibold">Upload successful!</p>
+        )}
       </form>
       {previewUrl && (
         <div className="flex justify-center flex-col items-center p-2 gap-2">
@@ -57,7 +76,7 @@ const ImageUploadForm = () => {
       )}
 
       {prediction && (
-        <div className="flex flex-col justify-center items-center" >
+        <div className="flex flex-col justify-center items-center">
           <h2 className="z-30 text-2xl font-semibold">Prediction Result</h2>
           <p>
             Vehicle Type: <strong>{prediction.tag}</strong>
@@ -65,7 +84,6 @@ const ImageUploadForm = () => {
           <p>Confidence: {prediction.confidence}</p>
         </div>
       )}
- 
     </div>
   );
 };
