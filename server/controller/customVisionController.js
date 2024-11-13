@@ -1,7 +1,7 @@
 const axios = require("axios");
 require("dotenv").config();
 
-const analyyzeImage = async (req, res) => {
+const analyzeImage = async (req, res) => {
   try {
     const endpoint = process.env.AZURE_CUSTOM_VISION_ENDPOINT;
     const predictionKey = process.env.AZURE_CUSTOM_VISION_PREDICTION_KEY;
@@ -27,4 +27,4 @@ const analyyzeImage = async (req, res) => {
   }
 };
 
-module.exports = { analyyzeImage }
+module.exports = { analyzeImage }
