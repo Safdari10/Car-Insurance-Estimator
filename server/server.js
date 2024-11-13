@@ -5,6 +5,7 @@ require('dotenv').config()
 
 const app = express();
 const PORT = process.env.PORT
+const HOST = process.env.HOST
 
 app.use(cors());
 app.use(express.json());
@@ -13,5 +14,5 @@ app.use(express.json());
 app.use('/api/image', imageRouter);
 
 app.listen(PORT, () => {
-console.log(`Server is running on ${PORT}`);    
+console.log(`Server is running on ${HOST}:${PORT}`);    
 })
