@@ -1,50 +1,107 @@
-# React + TypeScript + Vite
+# Car Insurance Premium Estimator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This application allows users to upload a photo of their car, and it predicts the car type using Azure Custom Vision. Based on the car type, the app provides a premium estimate for insurance.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Project Structure
 
-## Expanding the ESLint configuration
+The project is organized into two main folders:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **`server`**: Handles backend functionalities, including Azure Custom Vision API integration for image prediction.
+- **`client`**: The frontend application built with React, TypeScript, and Tailwind CSS.
 
-- Configure the top-level `parserOptions` property like this:
+---
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Features
+
+1. **Image Upload**: Users can upload a photo of their car through the frontend.
+2. **Car Type Prediction**: The backend uses Azure Custom Vision to identify the car type and confidence level.
+3. **Premium Estimation**: The frontend calculates an estimated insurance premium based on the car type.
+4. **Simple and Responsive Design**: Built with Tailwind CSS for a modern UI.
+
+---
+
+## Prerequisites
+
+- **Node.js**: Ensure you have Node.js installed.
+- **Azure Custom Vision**: A trained Azure Custom Vision model and its prediction endpoint and key.
+- **.env file**: Add the following keys in the root of the project:
+```
+     AZURE_CUSTOM_VISION_ENDPOINT=<your_endpoint> AZURE_CUSTOM_VISION_KEY=<your_prediction_key>
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+---
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Installation
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+1. Clone the repository:
 ```
+    git clone <repository-url>
+    cd <repository-folder> 
+```
+
+2. Install dependencies for bothe server and client:
+```
+   cd server
+   npm install
+   cd ../client
+   npm install
+```
+---
+## Running the Project
+
+1. Start the backend server:
+```
+   cd server
+   npm run start
+```
+2. Start the frontend:
+```
+   cd client
+   npm run dev
+```
+3. Open the app in your browser at http://localhost:5173.
+
+---
+## API Details
+
+### POST/upload
+ * Description: Accepts an image file, sends it to Azure Custom Vision, and returns the predicted car type and confidence level.
+ * Response Example:
+ ```
+   {
+   "carType": "sedan",
+   "confidence": 0.89
+   }
+```
+### Frontend Logic
+  * The frontend takes the user uploaded file and sends to the backend server and recieves the car type and confidence level from the backend server and calculates the premium estimate on the car type.
+
+### Backend Logic
+   *  The backend takes the user uploaded file and sends to the azure custom vision API and retrieves the car type and confidence levels. The confidence level is filtered and the highest confidence level is is sent to the front end along with the vahicle type.
+---
+## Technologies Used
+
+#### Frontend
+  * React
+  * TypeScript
+  * Vite
+  * Tailwind CSS
+
+  #### Backend
+  * Node.js
+  * Express
+  * Azure Custom Vision API
+
+---
+### Future Enhancements
+* Support for more detailed predicitons e.g car make and model.
+* Refine premium estimation logic based on additional car details.
+* connect to a insurance provider and allow user to apply for insurance for their car.
+
+### License
+
+This project is licensed under the MIT.
+
+Feel free to adjust the content as per your project specificss!
