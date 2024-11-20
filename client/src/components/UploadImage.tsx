@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useImageUpload } from "../context/ImageUploadContext";
+import { premiumPrices } from "../assets/PremiumPrices";
 
 const Upload = () => {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
