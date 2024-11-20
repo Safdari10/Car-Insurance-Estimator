@@ -4,7 +4,15 @@ import { premiumPrices } from "../assets/PremiumPrices";
 
 const Upload = () => {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
-  const { uploadImage, uploadStatus, setUploadStatus, error, setError, prediction, setPrediction } = useImageUpload();
+  const {
+    uploadImage,
+    uploadStatus,
+    setUploadStatus,
+    error,
+    setError,
+    prediction,
+    setPrediction,
+  } = useImageUpload();
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -14,10 +22,9 @@ const Upload = () => {
 
   const clearImage = () => {
     setSelectedImage(null);
-    setUploadStatus('');
+    setUploadStatus("");
     setError(null);
     setPrediction(null);
-
   };
 
   const handleSubmit = () => {
@@ -26,11 +33,10 @@ const Upload = () => {
     }
   };
 
-const vehiclePremium = prediction ? premiumPrices[prediction.tag] : null;
-
+  const vehiclePremium = prediction ? premiumPrices[prediction.tag] : null;
 
   return (
-    <div className="flex flex-col items-center justify-center p-4 bg-gray-50 rounded-lg">
+    <div className="flex flex-col items-center justify-center p-4  rounded-lg">
       <h1 className="text-2xl font-semibold text-gray-800 mb-4 text-center">
         Upload a picture of your car to get started
       </h1>
@@ -87,7 +93,9 @@ const vehiclePremium = prediction ? premiumPrices[prediction.tag] : null;
             </p>
             <p>Confidence: {prediction.confidence}</p>
             {vehiclePremium && (
-              <p className="mt-4 font-semibold">Premium Price: <strong>{vehiclePremium}</strong></p>
+              <p className="mt-4 font-semibold">
+                Premium Price: <strong>{vehiclePremium}</strong>
+              </p>
             )}
           </div>
         )}
