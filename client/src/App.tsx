@@ -7,8 +7,8 @@ const App = () => {
     <ImageUploadProvider>
       <div className="text-center">
         <Header />
-        <h1 className="text-blue-600 text-6xl text-center underline font-semibold m-10">
-          TURNERS CAR INSURANCE
+        <h1 className="text-blue-500 text-6xl text-center font-bold m-10">
+          Turners Car Insurance
         </h1>
       <Upload/>
       </div>
