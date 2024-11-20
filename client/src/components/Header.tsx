@@ -18,11 +18,10 @@ const Header = () => {
   };
 
   return (
-    <div className="bg-bl flex justify-between items-center px-5">
-      <div className="flex items-center gap-2">
+    <div className="flex justify-between items-center px-5">
+      <div className="flex items-center">
         <img src={logo} alt="logo" className="w-32 h-16" />
       </div>
-
       <div>
         {/* Hamburger icon for mobile screens */}
         <div
@@ -30,7 +29,6 @@ const Header = () => {
           onClick={handleClick}>
           &#9776;
         </div>
-
         {/* Navigation menu */}
         <nav
           className={`${
