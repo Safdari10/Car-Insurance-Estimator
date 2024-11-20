@@ -26,7 +26,7 @@ const Header = () => {
       <div>
         {/* Hamburger icon for mobile screens */}
         <div
-          className="block md:hidden cursor-pointer text-2xl"
+          className="block md:hidden cursor-pointer text-2xl w-10 h-10 text-blue-500"
           onClick={handleClick}>
           &#9776;
         </div>
@@ -36,7 +36,7 @@ const Header = () => {
           className={`${
             display ? "block" : "hidden"
           } md:block absolute md:static w-fit right-0`}>
-          <ul className="flex flex-col md:flex-row gap-8 p-4 md:p-0 bg-teal-500 md:bg-inherit">
+          <ul className="flex flex-col md:flex-row gap-8 p-4 md:p-0 md:bg-inherit">
             <li className="w-10 h-10 p-2 cursor-pointer">
               <FontAwesomeIcon
                 icon={faLocationDot}
