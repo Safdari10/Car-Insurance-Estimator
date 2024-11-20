@@ -4,7 +4,7 @@ import { premiumPrices } from "../assets/PremiumPrices";
 
 const Upload = () => {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
-  const { uploadImage, uploadStatus, error, prediction } = useImageUpload();
+  const { uploadImage, uploadStatus, setUploadStatus, error, setError, prediction, setPrediction } = useImageUpload();
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -14,6 +14,10 @@ const Upload = () => {
 
   const clearImage = () => {
     setSelectedImage(null);
+    setUploadStatus('');
+    setError(null);
+    setPrediction(null);
+
   };
 
   const handleSubmit = () => {
