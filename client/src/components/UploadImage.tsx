@@ -44,7 +44,7 @@ const vehiclePremium = prediction ? premiumPrices[prediction.tag] : null;
           className="absolute w-full h-full opacity-0 cursor-pointer"
         />
         {!selectedImage ? (
-          <p className="text-gray-600 text-center">
+          <p className="text-gray-600 text-center text-lg font-medium">
             Drag & Drop or{" "}
             <span className="text-blue-600 underline">Click to Upload</span>
           </p>
