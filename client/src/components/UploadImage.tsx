@@ -37,12 +37,12 @@ const Upload = () => {
 
   return (
     <div className="flex flex-col items-center justify-center p-4  rounded-lg">
-      <h1 className="text-2xl font-semibold text-gray-800 mb-4 text-center">
+      <h1 className="text-3xl font-semibold text-gray-800 mb-4 text-center">
         Upload a picture of your car to get started
       </h1>
 
       {/* Upload Area */}
-      <div className="relative bg-gray-100 w-[30rem] h-[20rem] rounded-lg border-dashed border-2 border-gray-400 flex items-center justify-center hover:bg-gray-200 transition">
+      <div className="relative bg-gray-100 w-[40rem] h-[30rem] rounded-lg border-dashed border-2 border-gray-400 flex items-center justify-center hover:bg-gray-200 transition">
         <input
           type="file"
           accept="image/*"
