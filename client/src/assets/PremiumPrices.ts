@@ -7,5 +7,6 @@ export  const premiumPrices: { [key: string]: string } = {
     Van: "$1,500",           
     Pickup: "$1,700",        
     SUV: "$1,800",
-    "Station Wagon": "$1,300"           
+    "Station Wagon": "$1,300",
+    Minivan: "$1,500",           
   };
