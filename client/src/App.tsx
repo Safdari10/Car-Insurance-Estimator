@@ -7,8 +7,8 @@ const App = () => {
     <ImageUploadProvider>
       <div className="text-center py-10">
         <Header />
-        <h1 className="text-3xl py-10 underline font-bold">
-          VEHICLE TYPE PREDICTOR
+        <h1 className="text-4xl text-center font-semibold m-2">
+          Turner Insurance
         </h1>
         <ImageUploadForm />
       </div>

@@ -34,7 +34,7 @@ const ImageUploadForm = () => {
           <label
             htmlFor="fileInput"
             className="text-xl px-5 block font-semibold p-2">
-            Upload Image:
+            Upload a picture of your car to get started:
           </label>
 
           <div className="relative w-80 h-52 bg-slate-300 border border-slate-400 rounded-lg flex justify-center items-center">
