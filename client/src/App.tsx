@@ -1,5 +1,5 @@
 import Header from "./components/Header";
-import ImageUploadForm from "./components/ImageUploadForm";
+import Upload from "./components/UploadImage";
 import { ImageUploadProvider } from "./context/ImageUploadContext";
 
 const App = () => {
@@ -10,7 +10,7 @@ const App = () => {
         <h1 className="text-4xl text-center font-semibold m-2">
           Turner Insurance
         </h1>
-        <ImageUploadForm />
+      <Upload/>
       </div>
     </ImageUploadProvider>
   );
