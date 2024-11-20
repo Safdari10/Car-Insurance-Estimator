@@ -80,20 +80,20 @@ const Upload = () => {
           </button>
         </div>
       )}
-      <div>
-        {uploadStatus === "failed" && <p>Error: {error}</p>}
-        {uploadStatus === "completed" && (
-          <p className="text-lg font-semibold">Upload Successfull!</p>
-        )}
+      <div className="bg-white mt-10 py-5 px-10 rounded-lg shadow-lg">
         {prediction && (
-          <div className="flex flex-col justify-center items-center">
-            <h2 className="z-30 text-2xl font-semibold">Prediction Result</h2>
-            <p>
+          <div className="flex flex-col justify-center items-center mt-5">
+            <h2 className="z-30 text-3xl font-semibold pb-5">
+              Estimated Premium Cost of your Vehicle:
+            </h2>
+            <p className="text-2xl font-semibold">
               Vehicle Type: <strong>{prediction.tag}</strong>
             </p>
-            <p>Confidence: {prediction.confidence}</p>
+            <p className="text-2xl font-semibold">
+              Confidence: {prediction.confidence}
+            </p>
             {vehiclePremium && (
-              <p className="mt-4 font-semibold">
+              <p className="my-4 text-2xl font-semibold">
                 Premium Price: <strong>{vehiclePremium}</strong>
               </p>
             )}
