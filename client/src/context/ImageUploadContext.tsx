@@ -10,14 +10,21 @@ interface ImageUploadContextType {
   error: string | null;
   uploadImage: (file: File) => Promise<void>;
   prediction: Prediction | null;
+  setUploadStatus: React.Dispatch<React.SetStateAction<string>>;
+  setError: React.Dispatch<React.SetStateAction<string | null>>;
+  setPrediction: React.Dispatch<React.SetStateAction<Prediction| null>>;
 }
 
-const ImageUploadContext = createContext<ImageUploadContextType | undefined>(undefined);
+const ImageUploadContext = createContext<ImageUploadContextType | undefined>(
+  undefined
+);
 
 export const useImageUpload = () => {
   const context = useContext(ImageUploadContext);
   if (!context) {
-    throw new Error("useImageUpload must be used within an ImageUploadProvider");
+    throw new Error(
+      "useImageUpload must be used within an ImageUploadProvider"
+    );
   }
   return context;
 };
@@ -29,7 +36,7 @@ interface ImageUploadProviderProps {
 export const ImageUploadProvider = ({ children }: ImageUploadProviderProps) => {
   const [uploadStatus, setUploadStatus] = useState<string>("idle");
   const [error, setError] = useState<string | null>(null);
-  const [prediction, setPrediction] = useState<Prediction | null>(null); 
+  const [prediction, setPrediction] = useState<Prediction | null>(null);
 
   const uploadImage = async (file: File) => {
     setUploadStatus("uploading");
@@ -49,8 +56,7 @@ export const ImageUploadProvider = ({ children }: ImageUploadProviderProps) => {
 
       const data = await response.json();
       setUploadStatus("completed");
-      setPrediction(data); 
-
+      setPrediction(data);
     } catch (err) {
       setError((err as Error).message);
       setUploadStatus("failed");
@@ -58,7 +64,8 @@ export const ImageUploadProvider = ({ children }: ImageUploadProviderProps) => {
   };
 
   return (
-    <ImageUploadContext.Provider value={{ uploadStatus, error, uploadImage, prediction }}>
+    <ImageUploadContext.Provider
+      value={{ uploadStatus, setUploadStatus, error, setError, uploadImage, prediction, setPrediction }}>
       {children}
     </ImageUploadContext.Provider>
   );
