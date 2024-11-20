@@ -22,6 +22,9 @@ const Upload = () => {
     }
   };
 
+const vehiclePremium = prediction ? premiumPrices[prediction.tag] : null;
+
+
   return (
     <div className="flex flex-col items-center justify-center p-4 bg-gray-50 rounded-lg">
       <h1 className="text-2xl font-semibold text-gray-800 mb-4 text-center">
@@ -79,6 +82,9 @@ const Upload = () => {
               Vehicle Type: <strong>{prediction.tag}</strong>
             </p>
             <p>Confidence: {prediction.confidence}</p>
+            {vehiclePremium && (
+              <p className="mt-4 font-semibold">Premium Price: <strong>{vehiclePremium}</strong></p>
+            )}
           </div>
         )}
       </div>
