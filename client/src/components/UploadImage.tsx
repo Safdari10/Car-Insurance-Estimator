@@ -74,9 +74,9 @@ const Upload = () => {
           </button>
         </div>
       )}
-      <div className="bg-white mt-10 py-5 px-10 rounded-lg shadow-lg">
+      <div>
         {prediction && (
-          <div className="flex flex-col justify-center items-center mt-5">
+          <div className="flex flex-col justify-center items-center bg-white mt-10 py-5 px-10 rounded-lg shadow-lg">
             <h2 className="z-30 text-3xl font-semibold pb-5">
               Estimated Premium Cost of your Vehicle:
             </h2>
