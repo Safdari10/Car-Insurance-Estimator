@@ -6,10 +6,6 @@ const Upload = () => {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const {
     uploadImage,
-    uploadStatus,
-    setUploadStatus,
-    error,
-    setError,
     prediction,
     setPrediction,
   } = useImageUpload();
@@ -22,8 +18,6 @@ const Upload = () => {
 
   const clearImage = () => {
     setSelectedImage(null);
-    setUploadStatus("");
-    setError(null);
     setPrediction(null);
   };
 
