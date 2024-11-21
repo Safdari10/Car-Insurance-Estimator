@@ -10,8 +10,6 @@ interface ImageUploadContextType {
   error: string | null;
   uploadImage: (file: File) => Promise<void>;
   prediction: Prediction | null;
-  setUploadStatus: React.Dispatch<React.SetStateAction<string>>;
-  setError: React.Dispatch<React.SetStateAction<string | null>>;
   setPrediction: React.Dispatch<React.SetStateAction<Prediction| null>>;
 }
 
@@ -65,7 +63,7 @@ export const ImageUploadProvider = ({ children }: ImageUploadProviderProps) => {
 
   return (
     <ImageUploadContext.Provider
-      value={{ uploadStatus, setUploadStatus, error, setError, uploadImage, prediction, setPrediction }}>
+      value={{ uploadStatus, error, uploadImage, prediction, setPrediction }}>
       {children}
     </ImageUploadContext.Provider>
   );
