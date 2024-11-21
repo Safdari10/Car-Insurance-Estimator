@@ -33,6 +33,10 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: server        # Set default directory for all run commands
+
     steps:
       # Step 1: Checkout the code from GitHub
       - uses: actions/checkout@v4
@@ -43,11 +47,10 @@ jobs:
           echo "Root Directory:"
           ls -al
           echo "Server Directory:"
-          ls -al server
+          ls -al
 
-      # Step 3: Set up Node.js (inside the server folder)
-      - name: Set up Node.js in server folder
-        working-directory: server
+      # Step 3: Set up Node.js (global, but dependencies are in server folder)
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
@@ -55,7 +58,6 @@ jobs:
 
       # Step 4: Install server dependencies
       - name: Install server dependencies
-        working-directory: server
         run: |
           npm install
 
@@ -65,4 +67,4 @@ jobs:
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+          package: .
