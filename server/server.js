@@ -1,18 +1,27 @@
 const express = require('express');
-const  cors = require('cors');
+const path = require('path');
+const cors = require('cors');
 const imageRouter = require('./routes/imageRoutes.js');
-require('dotenv').config()
+require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT
-const HOST = process.env.HOST
+const PORT = process.env.PORT;
+const HOST = process.env.HOST;
+
+// Middleware for serving static files
+app.use(express.static(path.join(__dirname, '../client/dist')));
 
 app.use(cors());
 app.use(express.json());
 
-// Route for image processing
+// API route for image processing
 app.use('/api/image', imageRouter);
 
+// Catch-all route for React (if needed for client-side routing)
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
+});
+
 app.listen(PORT, () => {
-console.log(`Server is running on ${HOST}:${PORT}`);    
-})
+  console.log(`Server is running on ${HOST}:${PORT}`);
+});
