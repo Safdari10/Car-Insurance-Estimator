@@ -9,7 +9,7 @@ const PORT = process.env.PORT;
 const HOST = process.env.HOST;
 
 // Middleware for serving static files
-app.use(express.static(path.join(__dirname, '../client/dist')));
+app.use(express.static(path.join(__dirname, './dist')));
 
 app.use(cors());
 app.use(express.json());
@@ -19,7 +19,7 @@ app.use('/api/image', imageRouter);
 
 // Catch-all route for React (if needed for client-side routing)
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
+  res.sendFile(path.join(__dirname, './dist', 'index.html'));
 });
 
 app.listen(PORT, () => {
