@@ -37,20 +37,23 @@ jobs:
       # Step 1: Checkout the code from GitHub
       - uses: actions/checkout@v4
 
-      # Step 2: Debug file structure
+      # Step 2: Debug file structure for clarity
       - name: Show file structure
         run: |
+          echo "Root Directory:"
           ls -al
+          echo "Server Directory:"
           ls -al server
 
-      # Step 3: Set up Node.js
-      - name: Set up Node.js
+      # Step 3: Set up Node.js (inside the server folder)
+      - name: Set up Node.js in server folder
+        working-directory: server
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
 
-      # Step 4: Install dependencies (inside the server folder)
+      # Step 4: Install server dependencies
       - name: Install server dependencies
         working-directory: server
         run: |
@@ -63,4 +66,3 @@ jobs:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
-
